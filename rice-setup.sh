@@ -132,6 +132,9 @@ if [[ $SOF == "y" || $SOF == "Y" ]]; then
     for SOFTWR in ${software[@]}; do
         sudo pacman -S $SOFTWR
     done
+    sudo curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+    echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+    sudo pacman -Syu sublime-text
     sudo systemctl enable --now ufw
     sudo ufw enable
     updatedb
@@ -154,8 +157,21 @@ if [[ $AUR == "y" || $AUR == "Y" ]]; then
         paru -S $SOFTWR
     done
     echo "Now better Reboot ! And hope it works."
+fi
+
+#Blackarch on top?
+read -rep $'[\e[1;33mACTION\e[0m] - Would you like to install blackarch tools? (y,n) ' BLA
+if [[ $BLA == "y" || $BLA == "Y" ]]; then
+    curl -O https://blackarch.org/strap.sh
+    echo 5ea40d49ecd14c2e024deecf90605426db97ea0c strap.sh | sha1sum -c
+    chmod +x strap.sh
+    sudo ./strap.sh
+    # Make sure to enable multilib for 32 bit binaries in pacman.conf. Its already dont in my configuration
+    sudo pacman -Syu
+    sudo pacman -S blackarch
 else
     echo "Now better Reboot ! And hope it works."
     exit
 fi
+
 
