@@ -5,9 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
 PS1='[\u@\h \W]\$ '
+source /usr/share/doc/pkgfile/command-not-found.bash
 
 case ${TERM} in
   Eterm*|alacritty*|aterm*|foot*|gnome*|konsole*|kterm*|putty*|rxvt*|tmux*|xterm*)
@@ -34,5 +36,3 @@ alias ls='ls --color=auto'
 # AutoCD
 shopt -s autocd
 
-#command help
-source /usr/share/doc/pkgfile/command-not-found.bash

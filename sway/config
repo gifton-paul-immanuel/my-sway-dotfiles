@@ -6,7 +6,7 @@
 
 font pango: SourceCodePro Medium 10
 
-gaps inner 10px
+gaps inner 5px
 gaps outer 2px
 
 #Disable window titlebar
@@ -87,10 +87,10 @@ input type:touchpad {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+CTRL+t exec $term
+    bindsym ALT+CTRL+t exec $term
 
     # Kill focused window
-    bindsym $mod+f4 kill
+    bindsym ALT+f4 kill
 
     # Start your launcher
     bindsym $mod+RETURN exec $menu
@@ -137,7 +137,10 @@ input type:touchpad {
 #
 # Workspaces:
 #
-    # Switch to workspace
+
+   bindsym ALT+tab workspace back_and_forth 
+   
+ # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
     bindsym $mod+3 workspace number 3
@@ -218,8 +221,12 @@ input type:touchpad {
 	bindsym $mod+CTRL+l exec swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2 
 
 # Screenshort
-bindsym $mod+Print exec grim -t jpeg ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-bindsym Print exec grim -t jpeg -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+	bindsym Print exec slurp | grim -g - - | wl-copy
+
+
+
+
+
 
 # Resizing container:
 #
