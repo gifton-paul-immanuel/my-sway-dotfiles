@@ -4,10 +4,11 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font pango: SourceCodePro Medium 10
+font pango: SourceCodePro Medium 9
 
-gaps inner 5px
-gaps outer 2px
+gaps inner 8px
+gaps outer 4px
+focus_follows_mouse yes
 
 #Disable window titlebar
 default_border pixel 2 
@@ -22,7 +23,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -33,8 +34,8 @@ set $filemgr thunar
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#output * bg /home/whoami/Pictures/arch1.jpg fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/.config/sway/peakpx.jpg fill
 #
 # Example configuration:
 #
@@ -221,12 +222,9 @@ input type:touchpad {
 	bindsym $mod+CTRL+l exec swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2 
 
 # Screenshort
-	bindsym Print exec slurp | grim -g - - | wl-copy
-
-
-
-
-
+	bindsym Print exec grim -g "$(slurp)" - | wl-copy
+	bindsym Shift+Print exec grim - | wl-copy	
+	bindsym $mod+Print exec grim 
 
 # Resizing container:
 #
@@ -261,3 +259,6 @@ bar {
 }
 
 include /etc/sway/config.d/*
+
+exec nm-applet
+exec blueman-applet

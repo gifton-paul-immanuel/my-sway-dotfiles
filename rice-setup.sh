@@ -67,7 +67,9 @@ elif [[ $DESK == "g" || $DESK == "G" ]]; then
     sudo pacman -S gnome gnome-extra
     sudo systemctl enable gdm
 elif [[ $DESK == "s" || $DESK == "s" ]]; then
-    sudo pacman -S sway swaybg foot polkit wofi waybar bluez bluez-utils blueman ttf-roboto-mono adobe-source-code-pro-fonts thunar git sddm brightnessctl eog xorg-xwayland pulseaudio pulseaudio-bluetooth
+    sudo pacman -S sway swaybg kitty polkit wofi waybar bluez bluez-utils blueman ttf-roboto-mono adobe-source-code-pro-fonts thunar git sddm brightnessctl eog xorg-xwayland pulseaudio pulseaudio-bluetooth 
+    #For automount in thunar
+    sudo pacman -S gvfs thunar-volman gvfs-mtp #mtp is for mobile
     systemctl --user enable pulseaudio.service 
     systemctl --user enable pulseaudio.socket
     sudo systemctl enable bluetooth 
@@ -117,6 +119,7 @@ software=(
     obsidian
     tor
     torbrowser-launcher
+    libreoffice-still
 )
 
 AUR_pkgs=(

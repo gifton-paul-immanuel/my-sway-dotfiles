@@ -116,7 +116,7 @@ button:hover {
 
 #battery {
     background-color: #bbccdd;
-    color: #000000;
+    color: #333333;
 }
 
 #battery.charging, #battery.plugged {
@@ -127,7 +127,7 @@ button:hover {
 @keyframes blink {
     to {
         background-color: #ffffff;
-        color: #000000;
+        color: #333333;
     }
 }
 
@@ -142,12 +142,12 @@ button:hover {
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: #333333;
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: #bbccdd;
+    color: #333333;
 }
 
 #memory {
@@ -155,7 +155,7 @@ label:focus {
 }
 
 #disk {
-    background-color: #964B00;
+    background-color: #bbccdd;
 }
 
 #backlight {
@@ -172,7 +172,7 @@ label:focus {
 
 #pulseaudio {
     background-color: #bbccdd;
-    color: #000000;
+    color: #333333;
 }
 
 #pulseaudio.muted {
@@ -180,9 +180,10 @@ label:focus {
     color: #2a5c45;
 }
 
+
 #wireplumber {
     background-color: #fff0f5;
-    color: #000000;
+    color: #333333;
 }
 
 #wireplumber.muted {
@@ -260,7 +261,7 @@ label:focus {
 
 #keyboard-state {
     background: #97e1ad;
-    color: #000000;
+    color: #333333;
     padding: 0 0px;
     margin: 0 5px;
     min-width: 16px;

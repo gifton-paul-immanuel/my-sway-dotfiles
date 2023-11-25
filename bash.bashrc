@@ -25,6 +25,8 @@ if [[ -r /usr/share/bash-completion/bash_completion ]]; then
   . /usr/share/bash-completion/bash_completion
 fi
 
+export HISTCONTROL=ignorespace
+
 alias myip='curl ipinfo.io/io'
 alias grep='grep --color=auto'
 alias ineedmirrors="reflector --verbose --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
