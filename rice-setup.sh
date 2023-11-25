@@ -67,7 +67,7 @@ elif [[ $DESK == "g" || $DESK == "G" ]]; then
     sudo pacman -S gnome gnome-extra
     sudo systemctl enable gdm
 elif [[ $DESK == "s" || $DESK == "s" ]]; then
-    sudo pacman -S sway swaybg kitty polkit wofi waybar bluez bluez-utils blueman ttf-roboto-mono adobe-source-code-pro-fonts thunar git sddm brightnessctl eog xorg-xwayland pulseaudio pulseaudio-bluetooth 
+    sudo pacman -S sway swaybg kitty polkit wofi waybar bluez bluez-utils blueman ttf-roboto-mono ranger foot adobe-source-code-pro-fonts thunar git sddm brightnessctl eog xorg-xwayland pulseaudio pulseaudio-bluetooth 
     #For automount in thunar
     sudo pacman -S gvfs thunar-volman gvfs-mtp #mtp is for mobile
     systemctl --user enable pulseaudio.service 
@@ -75,7 +75,7 @@ elif [[ $DESK == "s" || $DESK == "s" ]]; then
     sudo systemctl enable bluetooth 
     #Configuration of Dotfiles
     mkdir -p ~/.config 
-    cp -r {sway,foot,waybar,wofi} ~/.config/. 
+    cp -r {kitty,sway,foot,waybar,wofi} ~/.config/. 
     sudo cp bash.bashrc /etc/bash.bashrc
     sudo cp pacman.conf /etc/pacman.conf
 fi
