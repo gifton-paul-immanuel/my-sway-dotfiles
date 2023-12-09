@@ -1,18 +1,18 @@
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 25, // Waybar height (to be removed for auto height)
+    // "layer":0"top", // Waybar at top layer
+    // "positi15": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 10, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 2, // Gaps between modules (4px)
+    "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     
     
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media","cpu","disk","memory","backlight","wlr/taskbar"],
+    "modules-left": ["custom/message","custom/apps","custom/files", "sway/mode", "sway/scratchpad", "custom/media","wlr/taskbar"],
 
-    "modules-center": ["clock"],
+    "modules-center": ["sway/workspaces"],
     //"modules-center": ["sway/window"],
 
-    "modules-right": ["pulseaudio", "network","battery", "battery#bat2", "tray"],
+    "modules-right": ["tray","pulseaudio", "network","battery", "battery#bat2","clock","custom/power"],
     
 
 
@@ -24,43 +24,55 @@
         "3":3,
         "4":4,
         "5":5
-       }
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //      "warp-on-scroll": false,
-    //    "format": "{name}: {icon}",
-    //     "format-icons": {
-    //        "1": "",
-    //        "2": "",
-    //        "3": "",
-    //        "4": "",
-    //       "5": "",
-    //      "urgent": "",
-    //       "focused": "",
-    //       "default": ""
-    //  }
+       },
+         "disable-scroll": true,
+         "all-outputs": true,
+          "warp-on-scroll": false,
+        "format": "{icon}",
+         "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+           "5": "",
+      }
      },
      "disk": {
         "interval": 30,
         "format": "{percentage_free}% free {path}",
         "path": "/home"
     },
+   "custom/message": {
+   	"format": "Gifton's Console 🗿",
+	"on-click": "alacritty"
+    },
+    "custom/apps":{
+    	"format": "Resources ⚙️",
+	"on-click": "alacritty -e btop"
+	},
+    "custom/power": {
+    	"format": "Off 🔌",
+	"on-click": "wlogout"
+    },
+    "custom/files": {
+    	"format": "Files 📁",
+	"on-click": "thunar"
+    },
     "wlr/taskbar": {
         "format": "{icon}",
-        "icon-size": 14,
+        "icon-size": 15,
         "icon-theme": "Numix-Circle",
         "tooltip-format": "{title}",
         "on-click": "activate",
         "on-click-middle": "close",
         "ignore-list": [
-           "kitty"
+           "Alacritty"
         ],
         "app_ids-mapping": {
           "firefoxdeveloperedition": "firefox-developer-edition"
         },
         "rewrite": {
             "Firefox Web Browser": "Firefox",
-            "Foot Server": "Terminal"
         }
     },
     "keyboard-state": {
@@ -122,8 +134,7 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a %R %d-%b-%Y}",
-	"on-click":"gnome-calender"
+        "format": "🕓 {:%a %R %d-%b-%Y}",
     },
     "cpu": {
         "format": "{usage}% ",

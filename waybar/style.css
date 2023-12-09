@@ -6,8 +6,7 @@
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.9);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    background-color: transparent;
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -19,6 +18,10 @@ window#waybar.hidden {
 }
 
 /*
+    background-color: rgba(43, 48, 59, 0.9);
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+
+
 window#waybar.empty {
     background-color: transparent;
 }
@@ -89,6 +92,10 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#custom-power,
+#custom-files,
+#custom-apps,
+#custom-message,
 #mpd {
     padding: 0 10px;
     margin: 6px 3px;
@@ -111,17 +118,26 @@ button:hover {
 }
 
 #clock {
-    background-color: #bbccdd;
+    background-color: #272727;
+    color: #ffffff;
 }
 
 #battery {
-    background-color: #bbccdd;
-    color: #333333;
+    background-color: #272727;
+    color: #ffffff;
 }
 
 #battery.charging, #battery.plugged {
     color: #ffffff;
     background-color: #26A65B;
+}
+
+#custom-message,
+#custom-apps,
+#custom-files,
+#custom-power {
+   background-color: #272727;
+   color: #ffffff; 
 }
 
 @keyframes blink {
@@ -163,7 +179,8 @@ label:focus {
 }
 
 #network {
-    background-color: #bbccdd;
+    background-color: #272727;
+    color: #ffffff;
 }
 
 #network.disconnected {
@@ -171,8 +188,8 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #bbccdd;
-    color: #333333;
+    background-color: #272727;
+    color: #ffffff;
 }
 
 #pulseaudio.muted {
@@ -213,11 +230,11 @@ label:focus {
 }
 
 #tray {
-    background-color: #bbccdd;
+    background-color: #272727;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+    -gtk-icon-effect: highlight;
 }
 
 #tray > .needs-attention {

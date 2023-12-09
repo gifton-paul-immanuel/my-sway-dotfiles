@@ -6,37 +6,30 @@
 
 font pango: SourceCodePro Medium 9
 
-gaps inner 8px
-gaps outer 4px
+gaps outer 10px
+gaps inner 5px
 focus_follows_mouse yes
 
-#Disable window titlebar
-default_border pixel 2 
+
+default_border pixel 3
+default_floating_border none
+# default_border none
+# default_floating_border none
 
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term kitty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
+set $term alacritty
 set $menu wofi --show  
 set $filemgr thunar
 
+#Manual wallpaper
+output * bg ~/.config/sway/wallpapers/stu.jpg fill
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/.config/sway/peakpx.jpg fill
-#
+
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -84,32 +77,18 @@ input type:touchpad {
 
 
 ### Key bindings
-#
 # Basics:
-#
-    # Start a terminal
-    bindsym ALT+CTRL+t exec $term
-
-    # Kill focused window
+    bindsym CTRL+ALT+t exec $term
     bindsym ALT+f4 kill
 
-    # Start your launcher
     bindsym $mod+RETURN exec $menu
 
-    # Start thunar
     bindsym $mod+t exec $filemgr
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
     floating_modifier $mod normal
 
-    # Reload the configuration file
     bindsym $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
@@ -139,8 +118,6 @@ input type:touchpad {
 # Workspaces:
 #
 
-   bindsym ALT+tab workspace back_and_forth 
-   
  # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -221,11 +198,14 @@ input type:touchpad {
 # Screen Lock (paru -S swaylock-effects)
 	bindsym $mod+CTRL+l exec swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2 
 
+#Logout
+	bindsym $mod+CTRL+o exec wlogout
+
 # Screenshort
 	bindsym Print exec grim -g "$(slurp)" - | wl-copy
 	bindsym Shift+Print exec grim - | wl-copy	
 	bindsym $mod+Print exec grim 
-
+ 
 # Resizing container:
 #
 mode "resize" {
@@ -260,5 +240,5 @@ bar {
 
 include /etc/sway/config.d/*
 
-exec nm-applet
+exec nm-applet --indicator
 exec blueman-applet
