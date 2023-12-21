@@ -56,7 +56,7 @@
     },
     "custom/files": {
     	"format": "Files 📁",
-	"on-click": "thunar"
+	"on-click": "nautilus"
     },
     "wlr/taskbar": {
         "format": "{icon}",

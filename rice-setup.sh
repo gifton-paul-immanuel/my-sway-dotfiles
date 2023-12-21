@@ -67,15 +67,13 @@ elif [[ $DESK == "g" || $DESK == "G" ]]; then
     sudo pacman -S gnome gnome-extra
     sudo systemctl enable gdm
 elif [[ $DESK == "s" || $DESK == "s" ]]; then
-    sudo pacman -S sway swaybg polkit wofi waybar bluez bluez-utils blueman ttf-roboto-mono ranger alacritty adobe-source-code-pro-fonts thunar git sddm brightnessctl eog xorg-xwayland pulseaudio pulseaudio-bluetooth 
-    #For automount in thunar
-    sudo pacman -S gvfs thunar-volman gvfs-mtp #mtp is for mobile
+    sudo pacman -S sway swaybg foot polkit wofi waybar bluez bluez-utils blueman ttf-roboto-mono adobe-source-code-pro-fonts thunar git sddm brightnessctl eog xorg-xwayland pulseaudio pulseaudio-bluetooth
     systemctl --user enable pulseaudio.service 
     systemctl --user enable pulseaudio.socket
     sudo systemctl enable bluetooth 
     #Configuration of Dotfiles
     mkdir -p ~/.config 
-    cp -r {sway,alacritty,waybar,wofi} ~/.config/. 
+    cp -r {sway,foot,waybar,wofi} ~/.config/. 
     sudo cp bash.bashrc /etc/bash.bashrc
     sudo cp pacman.conf /etc/pacman.conf
 fi
@@ -119,7 +117,6 @@ software=(
     obsidian
     tor
     torbrowser-launcher
-    libreoffice-still
 )
 
 AUR_pkgs=(
@@ -135,9 +132,6 @@ if [[ $SOF == "y" || $SOF == "Y" ]]; then
     for SOFTWR in ${software[@]}; do
         sudo pacman -S $SOFTWR
     done
-    sudo curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
-    echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
-    sudo pacman -Syu sublime-text
     sudo systemctl enable --now ufw
     sudo ufw enable
     updatedb
@@ -147,7 +141,6 @@ if [[ $SOF == "y" || $SOF == "Y" ]]; then
     sudo usermod -aG libvirt $USER
     sudo cp libvirtd.conf /etc/libvirtd/libvirtd.conf 
     sudo cp bash.bashrc /etc/bash.bashrc
-    sudo pkgfile -u
 fi 
 
 read -rep $'[\e[1;33mACTION\e[0m] - Would you like to install AUR packages using PARU? (y,n) ' AUR
@@ -161,21 +154,8 @@ if [[ $AUR == "y" || $AUR == "Y" ]]; then
         paru -S $SOFTWR
     done
     echo "Now better Reboot ! And hope it works."
-fi
-
-#Blackarch on top?
-read -rep $'[\e[1;33mACTION\e[0m] - Would you like to install blackarch tools? (y,n) ' BLA
-if [[ $BLA == "y" || $BLA == "Y" ]]; then
-    curl -O https://blackarch.org/strap.sh
-    echo 5ea40d49ecd14c2e024deecf90605426db97ea0c strap.sh | sha1sum -c
-    chmod +x strap.sh
-    sudo ./strap.sh
-    # Make sure to enable multilib for 32 bit binaries in pacman.conf. Its already dont in my configuration
-    sudo pacman -Syu
-    sudo pacman -S blackarch
 else
     echo "Now better Reboot ! And hope it works."
     exit
 fi
-
 
